@@ -59,12 +59,6 @@ Como o projeto utiliza Docker, o processo de instalação é padronizado.
 
 ### 🧭 Passo a Passo
 
-1. Clone o repositório:
-
-# Trabalho Final - Tópicos
-
-## Instalação e Configuração
-
 ### 1. Clone o repositório
 ```bash
 git clone https://github.com/BernardoUnipam/trabalho-final-topicos.git
@@ -100,7 +94,7 @@ Ou se preferir usar o Docker diretamente:
 docker compose up -d
 ```
 
-6. Execute as migrações e o link de storage (cria tabelas no MySQL e libera acesso às imagens):
+### 6. Execute as migrações e o link de storage (cria tabelas no MySQL e libera acesso às imagens):
 
 - Via Sail:
   ```
@@ -114,7 +108,7 @@ docker compose up -d
   docker compose exec laravel.test php artisan storage:link
   ```
 
-7. Acesse a aplicação no navegador:
+### 7. Acesse a aplicação no navegador:
 - http://localhost
 
 ## 🏁 Conclusão
