@@ -33,7 +33,7 @@ class AuthController extends Controller
         ]);
     }
 
-    // Exibe o formulário de Registro (Para você criar o primeiro usuário)
+    // Exibe o formulário de Registro 
     public function showRegisterForm()
     {
         return view('auth.register');

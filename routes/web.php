@@ -1,19 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Cookie; // <<< Adicionado para Cookie
+use Illuminate\Support\Facades\Cookie; 
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\AuthController; // <<< Adicionado para Login
+use App\Http\Controllers\AuthController; 
 
 // --- ROTA DE COOKIE (Trocar Tema Claro/Escuro) ---
-// Essa rota cria/atualiza o cookie 'theme' e recarrega a página
 Route::get('/toggle-theme', function () {
     // Verifica o cookie atual e inverte o tema
     $theme = Cookie::get('theme') === 'dark' ? 'light' : 'dark';
     // Salva o cookie por 30 dias (43200 minutos)
     Cookie::queue('theme', $theme, 43200);
-    return back(); // Volta para a página anterior
+    return back();
 })->name('toggle.theme');
 
 // --- ROTAS DE AUTENTICAÇÃO (Públicas) ---

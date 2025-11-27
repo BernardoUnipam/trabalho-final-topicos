@@ -11,10 +11,11 @@ class ExampleTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response(): void
     {
+        // O teste tenta acessar a página inicial sem estar logado
         $response = $this->get('/');
 
-        // Agora esperamos o redirect, que é o comportamento certo da sua rota
+        // Redirecionando (302) para o LOGIN
         $response->assertStatus(302);
-        $response->assertRedirect(route('produtos.index'));
+        $response->assertRedirect(route('login'));
     }
 }

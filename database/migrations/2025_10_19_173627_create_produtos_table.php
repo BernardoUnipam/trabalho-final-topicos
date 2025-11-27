@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao')->nullable(); 
             $table->decimal('preco', 10, 2);
-            $table->string('imagem')->nullable(); // coluna para imagem
+            $table->string('imagem')->nullable(); 
             $table->timestamps();
         });
     }

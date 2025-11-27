@@ -4,16 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage; // Necessário para apagar imagens
-use Illuminate\Support\Facades\Cookie;  // Necessário para o Requisito 5
+use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Cookie;  
 
 class ProdutoController extends Controller
 {
     // LISTAR (Read)
     public function index()
     {
-        // Requisito 5: Uso de Cookies
-        // Vamos criar um cookie que dura 60 minutos guardando a data do último acesso
         Cookie::queue('ultimo_acesso_produtos', now()->format('d/m/Y H:i'), 60);
 
         // Busca produtos ordenados pelo mais recente
@@ -22,15 +20,11 @@ class ProdutoController extends Controller
         return view('produtos.index', compact('produtos'));
     }
 
-    // MOSTRAR FORMULÁRIO DE CRIAÇÃO (Create - View)
-    // Se você não tiver uma view separada 'create', pode usar a index se for modal.
-    // Mas para o CRUD completo, geralmente criamos uma rota create.
     public function create()
     {
         return view('produtos.create'); 
     }
 
-    // SALVAR NOVO (Create - Action)
     public function store(Request $request)
     {
         // Validação
@@ -55,7 +49,6 @@ class ProdutoController extends Controller
                          ->with('success', 'Produto cadastrado com sucesso!');
     }
 
-    // MOSTRAR FORMULÁRIO DE EDIÇÃO (Update - View)
     public function edit($id)
     {
         $produto = Produto::findOrFail($id);
@@ -81,7 +74,6 @@ class ProdutoController extends Controller
                 Storage::disk('public')->delete($produto->imagem);
             }
 
-            // 2. Salva a nova
             $caminhoImagem = $request->file('imagem')->store('produtos', 'public');
             $validated['imagem'] = $caminhoImagem;
         }

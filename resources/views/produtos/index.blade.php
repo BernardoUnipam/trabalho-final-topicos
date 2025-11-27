@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 @php
-    // Requisito 5: Lendo o Cookie para o Modo Escuro
     $theme = \Illuminate\Support\Facades\Cookie::get('theme') ?? 'light';
     $isDark = $theme === 'dark';
 @endphp
@@ -21,7 +20,6 @@
         
         <div class="d-flex align-items-center gap-3">
             <!-- Nome do Usuário Logado -->
-            <!-- O Auth::user() só existe porque estamos dentro do middleware(['auth']) -->
             <span class="fw-bold">Olá, {{ Auth::user()->name }}</span>
 
             <!-- Botão de Alternar Tema (Cookie) -->
@@ -42,7 +40,6 @@
     <div class="row mb-4">
         <div class="col-md-8">
             <h1 class="display-6">📦 Gerenciamento de Produtos</h1>
-            <!-- Requisito 5: Exibindo o Cookie de último acesso (definido no ProdutoController) -->
             <small class="{{ $isDark ? 'text-light opacity-75' : 'text-muted' }}">
                 Último acesso: {{ \Illuminate\Support\Facades\Cookie::get('ultimo_acesso_produtos') ?? 'Agora' }}
             </small>
